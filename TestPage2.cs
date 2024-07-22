@@ -1,6 +1,6 @@
 ﻿namespace MyMauiApp
 {
-    public partial class MainPage : ContentPage
+    public partial class TestPage2 : ContentPage
     {
 
         string? translatedNumber;
@@ -10,7 +10,7 @@
         Button translateBtn;
         Button callBtn;
 
-        public MainPage()
+        public TestPage2()
         {
             //InitializeComponent();
 
@@ -26,7 +26,7 @@
             enterPhoneWordLabel = new Label
             {
                 FontSize = 20,
-                Text = "Enter a Phoneword"
+                Text = "Test Page 2 Enter a Phoneword"
             };
             myStackLayout.Children.Add(enterPhoneWordLabel);
 
@@ -34,7 +34,7 @@
             {
                 Text = "1-555-NETMAUI"
             };
-            myStackLayout.Children.Add (phoneNumberText);
+            myStackLayout.Children.Add(phoneNumberText);
 
             translateBtn = new Button
             {
@@ -42,7 +42,7 @@
             };
             myStackLayout.Children.Add(translateBtn);
             translateBtn.Clicked += OnTranslate!;
-            
+
 
             callBtn = new Button
             {
@@ -60,21 +60,21 @@
             string enteredNumber = phoneNumberText.Text;
             translatedNumber = MyMauiApp.PhonewordTranslator.ToNumber(enteredNumber);
 
-            if (!string.IsNullOrEmpty(translatedNumber)) 
+            if (!string.IsNullOrEmpty(translatedNumber))
             {
                 callBtn.IsEnabled = true;
                 callBtn.Text = "Call " + translatedNumber;
             }
             else
             {
-                callBtn.IsEnabled=false;
+                callBtn.IsEnabled = false;
                 callBtn.Text = "Call";
             }
         }
 
         async void OnCall(object sender, EventArgs e)
         {
-            if(await this.DisplayAlert(
+            if (await this.DisplayAlert(
                 "Dial a Number",
                 "Would you like to call " + translatedNumber + "?",
                 "Yes",
