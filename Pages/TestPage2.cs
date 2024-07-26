@@ -58,7 +58,7 @@
         private void OnTranslate(object sender, EventArgs e)
         {
             string enteredNumber = phoneNumberText.Text;
-            translatedNumber = MyMauiApp.PhonewordTranslator.ToNumber(enteredNumber);
+            translatedNumber = PhonewordTranslator.ToNumber(enteredNumber);
 
             if (!string.IsNullOrEmpty(translatedNumber))
             {
