@@ -12,7 +12,6 @@
 
         public TestPage2()
         {
-            //InitializeComponent();
 
             var myScrollView = new ScrollView();
 
