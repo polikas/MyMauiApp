@@ -5,70 +5,26 @@
 
         string? translatedNumber;
 
-        Label enterPhoneWordLabel;
-        Entry phoneNumberText;
-        Button translateBtn;
-        Button callBtn;
-
         public MainPage()
         {
-            //InitializeComponent();
-
-            var myScrollView = new ScrollView();
-
-            var myStackLayout = new VerticalStackLayout
-            {
-                Padding = 20,
-                Spacing = 15
-            };
-            myScrollView.Content = myStackLayout;
-
-            enterPhoneWordLabel = new Label
-            {
-                FontSize = 20,
-                Text = "Enter a Phoneword"
-            };
-            myStackLayout.Children.Add(enterPhoneWordLabel);
-
-            phoneNumberText = new Entry
-            {
-                Text = "1-555-NETMAUI"
-            };
-            myStackLayout.Children.Add (phoneNumberText);
-
-            translateBtn = new Button
-            {
-                Text = "Translate"
-            };
-            myStackLayout.Children.Add(translateBtn);
-            translateBtn.Clicked += OnTranslate!;
+            InitializeComponent();
             
-
-            callBtn = new Button
-            {
-                IsEnabled = false,
-                Text = "Call"
-            };
-            myStackLayout.Children.Add(callBtn);
-            callBtn.Clicked += OnCall!;
-
-            this.Content = myScrollView;
         }
 
         private void OnTranslate(object sender, EventArgs e)
         {
-            string enteredNumber = phoneNumberText.Text;
+            string enteredNumber = PhoneNumberText.Text;
             translatedNumber = MyMauiApp.PhonewordTranslator.ToNumber(enteredNumber);
 
             if (!string.IsNullOrEmpty(translatedNumber)) 
             {
-                callBtn.IsEnabled = true;
-                callBtn.Text = "Call " + translatedNumber;
+                CallButton.IsEnabled = true;
+                CallButton.Text = "Call " + translatedNumber;
             }
             else
             {
-                callBtn.IsEnabled=false;
-                callBtn.Text = "Call";
+                CallButton.IsEnabled=false;
+                CallButton.Text = "Call";
             }
         }
 
